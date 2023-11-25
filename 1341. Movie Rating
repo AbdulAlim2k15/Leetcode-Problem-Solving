@@ -1,0 +1,15 @@
+select name results from 
+(
+select U.user_id, U.name, count(movie_id) as movie_count from Users U inner join MovieRating Mr on U.user_id = Mr.user_id group by U.user_id, U.name order by movie_count desc, U.name
+)
+where rownum = 1
+
+union all
+
+select title Results from 
+(select m.movie_id, m.title, avg(rating) as avg_rating from movies m inner Join MovieRating mr
+on m.movie_id = mr.movie_id
+where to_char(mr.created_at, 'yyyy-mm') = '2020-02'
+group by m.movie_id, m.title order by avg_rating desc, m.title
+)
+where rownum = 1;
