@@ -1,0 +1,12 @@
+with WINDOW AS(
+SELECT DISTINCT C1.visited_on AS start_date, C2.visited_on AS end_date
+FROM Customer C1 JOIN Customer C2
+ON (C1.visited_on + 6 = C2.visited_on)
+)
+
+select to_char(end_date, 'yyyy-mm-dd') as visited_on, 
+sum(amount) as amount, round(sum(amount)/7,2) as average_amount 
+from  WINDOW W join Customer C 
+on (visited_on between start_date and end_date)
+group by start_date, end_date
+order by visited_on;
