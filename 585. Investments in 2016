@@ -1,0 +1,8 @@
+with temp as(
+    select tiv_2016, 
+    count(tiv_2015) 
+    over (partition by tiv_2015) as similar_tiv_15, 
+    count(lat||lon) over (partition by lat||lon) 
+    as unique_loc from Insurance 
+)
+select sum(tiv_2016) as tiv_2016 from temp where unique_loc = 1 and similar_tiv_15 >1;
