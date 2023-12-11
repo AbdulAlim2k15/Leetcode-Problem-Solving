@@ -1,0 +1,24 @@
+//Sliding window algorithm
+class Solution {
+public:
+    double findMaxAverage(vector<int>& nums, int k) {
+        int sum =0;
+        for(int i=0; i<k; i++){
+            sum+= nums[i];
+        }
+        int max_sum = sum;
+
+        int s_inx = 0;
+        int e_idx = k;
+        while(e_idx<nums.size()){
+            sum-= nums[s_inx];
+            s_inx++;
+
+            sum+= nums[e_idx];
+            e_idx++;
+
+            max_sum = max(max_sum,sum);
+        }
+         return (double) max_sum/k;
+    }
+};
