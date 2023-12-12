@@ -1,0 +1,37 @@
+//sliding window algorithm
+class Solution {
+public:
+    int maxVowels(string s, int k) {
+        set<char> vowel;
+        vowel.insert('a');
+        vowel.insert('e');
+        vowel.insert('i');
+        vowel.insert('o');
+        vowel.insert('u');
+
+        int count = 0;
+
+        for(int j=0; j<k; j++){
+            
+            if(vowel.contains(s[j])){
+                count++;
+            }
+        }
+        int maxCount = count;
+
+        for(int i=k; i< s.length(); i++){
+           if(vowel.contains(s[i])){
+               count++;
+           }
+           if(vowel.contains(s[i-k])){
+               count--;
+           }
+           maxCount = max(maxCount, count);
+           if(maxCount == k){
+               break;
+           }
+        }
+        return maxCount;
+        
+    }
+};
