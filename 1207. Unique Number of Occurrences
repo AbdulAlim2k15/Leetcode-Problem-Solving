@@ -1,0 +1,14 @@
+class Solution {
+    public boolean uniqueOccurrences(int[] arr) {
+        boolean result = false;
+        HashMap<Integer, Integer> numOfOccur = new HashMap();
+        for(int n: arr){
+            numOfOccur.put(n, numOfOccur.getOrDefault(n,0)+1);
+        }
+        HashSet<Integer> uniqueValue = new HashSet(numOfOccur.values());
+        if(numOfOccur.size() ==uniqueValue.size()){
+            result = true;
+        }
+        return result;
+    }
+}
