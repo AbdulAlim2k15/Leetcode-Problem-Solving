@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int equalPairs(vector<vector<int>>& grid) {
+        int n = grid.size();
+        map<vector<int>, int> row_map;
+        int count =0;
+
+        for(int row = 0; row<n; row++){
+            row_map[grid[row]]++;
+        }
+        for(int c=0; c<n; c++){
+            vector<int> col;
+            for(int r=0; r<n; r++){
+                col.push_back(grid[r][c]);
+            }
+            count += row_map[col];
+        }
+        return count;
+    }
+};
