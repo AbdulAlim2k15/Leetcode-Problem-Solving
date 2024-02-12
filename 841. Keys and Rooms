@@ -1,0 +1,21 @@
+class Solution:
+    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
+        visited = [False] * len(rooms)
+        que = collections.deque()
+        len_0 = len(rooms[0])
+        for i in range(len_0):
+            que.append(rooms[0][i])
+        
+        visited[0] = True
+        while(que):
+            x = que.popleft()
+            if visited[x] == False:
+                len_x = len(rooms[x])
+                for j in range(len_x):
+                    if visited[rooms[x][j]] == False:
+                        que.append(rooms[x][j])
+                visited[x] = True
+        for k in range(len(visited)):
+            if visited[k] == False:
+                return False
+        return True
