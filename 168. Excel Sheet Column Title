@@ -1,0 +1,11 @@
+class Solution:
+    def convertToTitle(self, columnNumber: int) -> str:
+        title = ""
+        n = columnNumber
+        while(n>0):
+            offset = (n-1) % 26 
+            title +=  chr(ord('A') + offset)
+            n = (n-1)//26
+        return title[::-1]
+        
+        
