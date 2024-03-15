@@ -1,0 +1,2 @@
+select Emp.name as Employee from Employee Emp, Employee Mgr
+where Emp.managerId = Mgr.Id and Emp.salary > Mgr.salary
