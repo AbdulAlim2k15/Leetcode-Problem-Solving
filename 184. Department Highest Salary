@@ -1,0 +1,4 @@
+/* Write your PL/SQL query statement below */
+Select dept.name as Department, emp.name as Employee, emp.salary as Salary 
+from Employee emp join Department dept on emp.departmentId = dept.id
+where (dept.id, emp.salary) in (select departmentid, max(salary) from Employee group by departmentid)
