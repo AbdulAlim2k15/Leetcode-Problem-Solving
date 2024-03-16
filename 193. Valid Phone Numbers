@@ -1,0 +1,10 @@
+grep -E '^([0-9]{3}-[0-9]{3}-[0-9]{4}$)|^(\([0-9]{3}\) )[0-9]{3}-[0-9]{4}$' file.txt
+
+
+
+#[0-9]{3} means digit exactly 3 times
+#^ is start of line
+#$ is end of line
+#| is alternative
+#() are for grouping
+#\( \) are literally parentasis (not interpered as grouping)
