@@ -1,0 +1,10 @@
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        m_st, m_ts = {},{}
+        for i in range(len(s)):
+            char_s, char_t = s[i], t[i]
+            if (char_s in m_st and m_st[char_s] != char_t) or (char_t in m_ts and m_ts[char_t] != char_s):
+                return False
+            m_st[char_s] = char_t
+            m_ts[char_t] = char_s
+        return True
