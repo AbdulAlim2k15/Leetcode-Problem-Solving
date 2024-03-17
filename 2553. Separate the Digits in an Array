@@ -1,0 +1,13 @@
+class Solution(object):
+    def separateDigits(self, nums):
+        digit_str = ""
+        for num in nums:
+            digit_str += str(num)
+
+        number = []
+        for i in range(0,len(digit_str)):
+            number.append(int(digit_str[i]))
+        return number
+
+
+        
