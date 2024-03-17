@@ -1,0 +1,25 @@
+
+#convert given string to sting of Ascii value
+#then convert string of ascii valu to list of integer
+#finally add elements of list 
+class Solution:
+    def getLucky(self, s: str, k: int) -> int:
+        digit_str = ""
+        for i in range(len(s)):
+            digit_str += str(ord(s[i])-96)
+        
+        m=1
+        while True:
+            num = []
+            sum = 0
+            for i in range(0, len(digit_str)):
+                num.append(int(digit_str[i]))
+                sum += num[i]
+                
+            if m<k:
+                digit_str = str(sum)
+                m+=1
+            elif m==k:
+                break
+        return sum
+    
