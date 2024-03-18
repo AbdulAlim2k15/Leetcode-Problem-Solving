@@ -1,0 +1,23 @@
+class Solution(object):
+    def nthUglyNumber(self, n):
+
+        def helper( num, x):
+            while num % x == 0:
+                num = num/x;
+            return num
+
+        prime = [2,3,5]
+        ugly = []
+        count = 1
+        a = 1
+        while count <=n:
+            tem = a
+            for i in prime:
+                if(tem%i == 0):
+                    tem = helper(tem, i )
+            if tem==1:
+                ugly.append(a)
+                count+=1
+            a+=1
+        
+        return ugly[-1]
