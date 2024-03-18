@@ -1,0 +1,25 @@
+class Solution(object):
+    def isUgly(self, n):
+
+        def helper( num, x):
+            while num % x == 0:
+                num = num/x;
+            return num
+
+        prime = [2,3,5]
+        if n==0:
+            return False
+        for i in prime:
+            if(n%i == 0):
+                n = helper(n, i )
+        if n==1:
+            return True
+        return False
+
+        
+
+        """
+        :type n: int
+        :rtype: bool
+        """
+        
