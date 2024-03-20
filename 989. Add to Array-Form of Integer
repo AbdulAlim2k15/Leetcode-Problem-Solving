@@ -1,0 +1,10 @@
+class Solution(object):
+    def addToArrayForm(self, num, k):
+        char_list = [str(current_integer) for current_integer in num]     #list comprehension: convert each int element into string
+        num = "".join(char_list)          #['1', '2', '5'] to '125'
+        num = int(num)
+        sum = num + k 
+        res = [int(x) for x in str(sum)]    #list comprehension
+        return res
+        
+        
