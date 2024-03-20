@@ -1,0 +1,29 @@
+int findMaxConsecutiveOnes(int* nums, int numsSize) {
+    if(numsSize == 0){
+        return 0;
+    }
+    int length = numsSize+1;
+    int count[length];
+    int k = 0;
+    int countOne=0;
+    for(int i=0; i < numsSize; i++){
+        if(nums[i] == 1){
+            countOne +=1;
+        }
+        else{
+            count[k] = countOne;
+            k++;
+            countOne = 0;
+        }
+    }
+    count[k] = countOne;
+
+    int max = 0;
+    for(int j = 0; j<=k; j++){
+        if(count[j] > max){
+            max = count[j];
+        }
+    }
+    return max;
+    
+}
