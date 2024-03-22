@@ -1,0 +1,12 @@
+class Solution(object):
+    def findFinalValue(self, nums, original):
+        nums.sort()
+        for x in nums:
+            if x == original:
+                original *=2
+        return original
+            
+
+        
+    
+        
