@@ -1,0 +1,11 @@
+class Solution(object):
+    def dominantIndex(self, nums):
+        for i in range(len(nums)):
+            count = 0
+            for j in range(len(nums)):
+                if i!=j and nums[i] >= 2*nums[j]:
+                    count += 1
+            if count == len(nums) - 1:
+                return i
+        return -1
+        
