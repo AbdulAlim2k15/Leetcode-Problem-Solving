@@ -1,0 +1,11 @@
+class Solution(object):
+    def kItemsWithMaximumSum(self, numOnes, numZeros, numNegOnes, k):
+        max_sum = 0
+
+        #make a list of all item
+        items = [1]*numOnes + [0]*numZeros + [-1]*numNegOnes
+
+        for i in range(k):
+            max_sum += items[i]
+
+        return max_sum
