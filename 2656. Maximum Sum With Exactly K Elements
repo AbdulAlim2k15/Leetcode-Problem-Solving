@@ -1,0 +1,18 @@
+class Solution(object):
+    def maximizeSum(self, nums, k):
+        max = nums[0]
+        max_index = 0
+        for i in range(len(nums)):
+            if nums[i] > max:
+                max = nums[i]
+                max_index = i
+        score = 0
+        for j in range(k):
+            score += nums[max_index]
+            max = max + 1
+            nums[max_index] = max       
+        return score     
+
+       
+       
+        
