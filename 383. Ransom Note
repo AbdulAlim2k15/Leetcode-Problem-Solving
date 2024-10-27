@@ -1,0 +1,24 @@
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+
+        maga_counter = {}
+        for char in magazine:
+            if char in  maga_counter:
+                 maga_counter[char] += 1
+            else:
+                 maga_counter[char] = 1
+        
+        for c in ransomNote:
+            if c not in maga_counter:
+                return False
+            elif maga_counter[c] == 1:
+                del maga_counter[c]
+            else:
+                maga_counter[c] -= 1
+        return True
+
+
+       
+
+
+        
