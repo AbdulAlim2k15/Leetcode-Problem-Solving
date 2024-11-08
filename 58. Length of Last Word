@@ -1,0 +1,23 @@
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        st = []
+        lenOfLastWord = 0
+        for ch in s:
+            st.append(ch)
+        
+        while st:
+            if not st[-1].isalpha():
+                st.pop()
+            else:
+                break
+        
+        while st:
+            if st[-1].isalpha():
+                lenOfLastWord +=1
+                st.pop()
+            else:
+                break
+        return lenOfLastWord
+            
+        
+        
