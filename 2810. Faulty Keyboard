@@ -1,0 +1,13 @@
+
+class Solution:
+    def finalString(self, s: str) -> str:
+        s = list(s)
+        i=0
+        while i<len(s):
+            if s[i] == 'i':
+                s[:i] = s[:i][::-1]  # Reverse the part of the list up to the current 'i'
+                s.pop(i)             # Remove 'i' at the current index without skipping next character
+            else:
+                i += 1
+        return ''.join(s)
+        
