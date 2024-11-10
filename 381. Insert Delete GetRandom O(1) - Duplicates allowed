@@ -1,0 +1,43 @@
+import random
+
+class RandomizedCollection:
+
+    def __init__(self):
+        self.dict = {}  # Maps values to sets of indices
+        self.list = []  # List of values for random access
+
+    def insert(self, val: int) -> bool:
+        is_new_val = val not in self.dict
+        if is_new_val:
+            self.dict[val] = set()
+        self.dict[val].add(len(self.list))
+        self.list.append(val)
+        return is_new_val 
+
+    def remove(self, val: int) -> bool:
+        if val not in self.dict or not self.dict[val]:
+            return False  # val is not in the collection
+
+        # Get an index of the element to remove
+        idx_to_remove = self.dict[val].pop()
+        last_idx = len(self.list) - 1
+        last_val = self.list[last_idx]
+
+        # If the element to remove is not the last one, swap with the last element
+        if idx_to_remove != last_idx:
+            self.list[idx_to_remove] = last_val
+            # Update the dictionary for last_val to reflect the new index
+            self.dict[last_val].add(idx_to_remove)
+            self.dict[last_val].discard(last_idx)
+
+        # Remove the last element from the list
+        self.list.pop()
+
+        # If there are no more occurrences of val, remove it from the dictionary
+        if not self.dict[val]:
+            del self.dict[val]
+
+        return True
+
+    def getRandom(self) -> int:
+        return random.choice(self.list) if self.list else -1
