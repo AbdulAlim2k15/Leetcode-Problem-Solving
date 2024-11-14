@@ -1,0 +1,20 @@
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+     
+        min_len = 201
+        for i in range(len(strs)):
+            if len(strs[i]) < min_len:
+                min_len = len(strs[i])
+
+        if strs is None:
+            return ""
+        elif len(strs) ==1:
+            return strs[0]
+        for i in range(min_len):
+            for j in range(len(strs)-1):
+                if strs[j][i] != strs[j+1][i]:
+                    if i == 0:
+                        return ""
+                    return strs[j][:i]    # 1 to n slicing
+        return strs[0][:min_len]
+        
