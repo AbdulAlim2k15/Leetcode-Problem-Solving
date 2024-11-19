@@ -1,0 +1,23 @@
+class Solution:
+    def arithmeticTriplets(self, nums: List[int], diff: int) -> int:
+
+        n = len(nums)
+        trip_count = 0
+        for i in range(n-2):
+            j = i+1
+            while j < n-1:
+                if nums[j] - nums[i] == diff:
+                    k = j+1
+                    while k < n:
+                        if nums[k] - nums[j] == diff:
+                            trip_count+=1
+                            break
+                        else:
+                            k+=1
+                    break
+                else:
+                    j+=1
+        return trip_count
+                
+                
+                
